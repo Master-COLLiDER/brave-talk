@@ -16,8 +16,13 @@ runs:
         cache: npm
     - run: npm ci
       shell: bash
-    - run: npm audit
-      shell: bash
+    - name: npm audit
+      continue-on-error: true
+      run: |
+        echo "## npm audit report" > $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        npm audit >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
     - run: npm test
       shell: bash
     - run: npm run build
