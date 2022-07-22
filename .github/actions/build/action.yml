@@ -23,6 +23,7 @@ runs:
         echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         npm audit >> $GITHUB_STEP_SUMMARY
         echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+      shell: bash
     - run: npm test
       shell: bash
     - run: npm run build
